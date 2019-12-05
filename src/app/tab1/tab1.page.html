@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="danger" style="text-align: center;">
+    <ion-title>Busque seu Pokemon</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form >
+      <ion-label >Digite o nome do Pokémon:</ion-label>
+    <ion-item>
+      <ion-input required  type="text" id="nome" name="nome" [(ngModel)]="pokemon.name"></ion-input>
+    </ion-item>
+    <ion-button block color="primary"  type="submit" (click)="buscar()">
+      Buscar
+      <ion-icon slot="end" name="search"></ion-icon>
+    </ion-button>
+  </form>
+  <ion-card *ngFor="let p of pokemon.types">
+    <ion-card-content>
+      <img [src]="pokemon.sprites.front_default" style="width: 200px; height: 200px">
+      <ion-label>Tipo: {{p.type.name}}</ion-label><br>
+      <ion-label>Peso: {{pokemon.weight}}</ion-label><br>
+      <ion-label>Altura: {{pokemon.height}}</ion-label>
+    </ion-card-content>
+    <ion-card-content *ngFor="let a of pokemon.abilities">
+      <ion-label>Habilidades: {{a.ability.name}}</ion-label>
+    </ion-card-content>
+    <ion-button block color="primary"  type="submit" (click)="favoritos(pokemon)">
+      Adicionar aos Favoritos
+      <ion-icon slot="end" name="add"></ion-icon>
+    </ion-button>
+  </ion-card>
+</ion-content>
